@@ -5,5 +5,5 @@ Docker Hub: iamfat/dnsmasq
 docker build -t iamfat/dnsmasq dnsmasq
 
 export BASE_DIR=/mnt/sda1/data
-docker run --name dnsmasq -v /dev/log:/dev/log --privileged -d -p 127.0.0.1:53:53 iamfat/dnsmasq
+docker run --name dnsmasq -v /dev/log:/dev/log --restart=on-failure:10 -d -p 172.17.42.1:53:53 -p 172.17.42.1:53:53/udp iamfat/dnsmasq
 ```
